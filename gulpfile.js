@@ -21,7 +21,7 @@ gulp.task('build:deep', [
 
 gulp.task('develop', [
   'watch',
-  'server'
+  'dev:server'
 ]);
 
 gulp.task('watch', () => {
@@ -37,6 +37,10 @@ gulp.task('watch', () => {
     'source/**/*.sass',
     ['sass']
   );
+  gulp.watch(
+    'static/*.sass',
+    ['sass:static']
+  );
   helper.deleteListener(
     'source/**/*.{html,json}',
     'app/**/*.{html,json}'
@@ -47,9 +51,11 @@ gulp.task('watch', () => {
   );
 });
 
-helper.lazyTask('clean', './clean', ['app/']);
+helper.lazyTask('clean', './clean', {
+  src: 'app/'
+});
 
-helper.lazyTask('server', './server');
+helper.lazyTask('dev:server', './server');
 
 helper.lazyTask('assets', './copy', {
   src: 'source/**/*.{html,json,js}',
@@ -64,4 +70,9 @@ helper.lazyTask('typescript', './typescript', {
 helper.lazyTask('sass', './sass', {
   src: 'source/**/*.sass',
   dst: 'app/'
+});
+
+helper.lazyTask('sass:static', './sass', {
+  src: 'static/*.sass',
+  dst: 'static/'
 });
