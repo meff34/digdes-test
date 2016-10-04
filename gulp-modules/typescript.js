@@ -35,7 +35,7 @@ module.exports = function(opts) {
             gulp.dest(opts.dst)
         ).on('error', GLP.notify.onError(function (err) {
           return {
-            title: options.taskname,
+            title: opts.taskname,
             message: err.message
           };
         }));

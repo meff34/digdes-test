@@ -26,7 +26,7 @@ gulp.task('develop', [
 
 gulp.task('watch', () => {
   gulp.watch(
-    'source/**/*.{html,json,js}',
+    'source/**/*.html',
     ['assets']
   );
   gulp.watch(
@@ -42,8 +42,8 @@ gulp.task('watch', () => {
     ['sass:static']
   );
   helper.deleteListener(
-    'source/**/*.{html,json}',
-    'app/**/*.{html,json}'
+    'source/**/*.html',
+    'app/**/*.html'
   );
   helper.deleteListener(
     'source/**/*.sass',
@@ -58,7 +58,7 @@ helper.lazyTask('clean', './clean', {
 helper.lazyTask('dev:server', './server');
 
 helper.lazyTask('assets', './copy', {
-  src: 'source/**/*.{html,json,js}',
+  src: 'source/**/*.html',
   dst: 'app/'
 });
 

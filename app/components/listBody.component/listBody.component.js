@@ -8,21 +8,22 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-const core_1 = require('@angular/core');
-const platform_browser_1 = require('@angular/platform-browser');
-const app_component_1 = require('./components/app.component/app.component');
-const list_component_1 = require("./components/list.component/list.component");
-const listBody_component_1 = require("./components/listBody.component/listBody.component");
-let AppModule = class AppModule {
+const core_1 = require("@angular/core");
+let ListBodyComponent = class ListBodyComponent {
+    constructor() {
+    }
 };
-AppModule = __decorate([
-    core_1.NgModule({
-        imports: [platform_browser_1.BrowserModule],
-        declarations: [app_component_1.AppComponent, list_component_1.ListComponent, listBody_component_1.ListBodyComponent],
-        bootstrap: [app_component_1.AppComponent]
+__decorate([
+    core_1.Input(), 
+    __metadata('design:type', Array)
+], ListBodyComponent.prototype, "persons", void 0);
+ListBodyComponent = __decorate([
+    core_1.Component({
+        selector: 'list-body',
+        templateUrl: 'app/components/listBody.component/listBody.component.html'
     }), 
     __metadata('design:paramtypes', [])
-], AppModule);
-exports.AppModule = AppModule;
+], ListBodyComponent);
+exports.ListBodyComponent = ListBodyComponent;
 
-//# sourceMappingURL=maps/app.module.js.map
+//# sourceMappingURL=../../maps/components/listBody.component/listBody.component.js.map

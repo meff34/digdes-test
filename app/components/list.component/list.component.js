@@ -9,15 +9,27 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 const core_1 = require('@angular/core');
-let AppComponent = class AppComponent {
+const list_service_1 = require("../../shared/list.service");
+let ListComponent = class ListComponent {
+    constructor(listService) {
+        this.listService = listService;
+    }
+    ngOnInit() {
+        this.getData();
+    }
+    getData() {
+        this.listService.getPromiseData()
+            .then(usersArray => this.persons = usersArray);
+    }
 };
-AppComponent = __decorate([
+ListComponent = __decorate([
     core_1.Component({
-        selector: 'my-app',
-        template: '<h1>My First Angular App</h1>'
+        selector: 'list',
+        templateUrl: 'app/components/list.component/list.component.html',
+        providers: [list_service_1.ListService]
     }), 
-    __metadata('design:paramtypes', [])
-], AppComponent);
-exports.AppComponent = AppComponent;
+    __metadata('design:paramtypes', [list_service_1.ListService])
+], ListComponent);
+exports.ListComponent = ListComponent;
 
-//# sourceMappingURL=maps/app.component.js.map
+//# sourceMappingURL=../../maps/components/list.component/list.component.js.map
