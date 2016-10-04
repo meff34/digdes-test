@@ -18,14 +18,10 @@ let ListComponent = class ListComponent {
         this.getData();
         this.persons = this.personsData;
     }
-    onQueryString(string) {
-        console.log(string);
-        if (string != '') {
-            this.persons = this.personsData.filter(person => {
-                return person.login
-                    .toLowerCase()
-                    .includes(string.toLowerCase()) ? true : false;
-            });
+    onQueryString(emittedObject) {
+        if (emittedObject.value != '') {
+            this.persons = this.personsData
+                .filter(person => this.checkContainsInString(emittedObject.value, person[emittedObject.id]));
         }
         else {
             this.persons = this.personsData;
@@ -34,6 +30,11 @@ let ListComponent = class ListComponent {
     getData() {
         this.listService.getPromiseData()
             .then(usersArray => this.personsData = this.persons = usersArray);
+    }
+    checkContainsInString(queryString, checkingString) {
+        return checkingString
+            .toLowerCase()
+            .includes(queryString.toLowerCase()) ? true : false;
     }
 };
 ListComponent = __decorate([

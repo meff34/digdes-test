@@ -13,8 +13,12 @@ let ListFilterComponent = class ListFilterComponent {
     constructor() {
         this.queryString = new core_1.EventEmitter();
     }
-    onInputChange(str) {
-        this.queryString.emit(str);
+    onInputChange(element) {
+        let emittingObject = {
+            id: element.id,
+            value: element.value
+        };
+        this.queryString.emit(emittingObject);
     }
 };
 __decorate([
