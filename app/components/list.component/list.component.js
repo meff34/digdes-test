@@ -16,10 +16,24 @@ let ListComponent = class ListComponent {
     }
     ngOnInit() {
         this.getData();
+        this.persons = this.personsData;
+    }
+    onQueryString(string) {
+        console.log(string);
+        if (string != '') {
+            this.persons = this.personsData.filter(person => {
+                return person.login
+                    .toLowerCase()
+                    .includes(string.toLowerCase()) ? true : false;
+            });
+        }
+        else {
+            this.persons = this.personsData;
+        }
     }
     getData() {
         this.listService.getPromiseData()
-            .then(usersArray => this.persons = usersArray);
+            .then(usersArray => this.personsData = this.persons = usersArray);
     }
 };
 ListComponent = __decorate([

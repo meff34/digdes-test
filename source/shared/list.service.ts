@@ -6,7 +6,7 @@ export class ListService {
 
   public getPromiseData():any {
     return new Promise((resolve, reject) => {
-      resolve(mockData);
+      setTimeout(() => resolve(mockData), 150);
     });
   }
 }

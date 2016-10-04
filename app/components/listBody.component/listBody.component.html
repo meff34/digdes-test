@@ -1,6 +1,6 @@
-<div *ngFor="let person of persons">
-  {{person.login}}
-  {{person.email}}
-  {{person.name}}
-  {{person.createDate}}
+<div class="row" *ngFor="let person of persons">
+  <div class="cell">{{person.login}}</div>
+  <div class="cell">{{person.email}}</div>
+  <div class="cell">{{person.name}}</div>
+  <div class="cell">{{person.createDate}}</div>
 </div>

@@ -9,22 +9,26 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 const core_1 = require("@angular/core");
-let ListBodyComponent = class ListBodyComponent {
+let ListFilterComponent = class ListFilterComponent {
     constructor() {
+        this.queryString = new core_1.EventEmitter();
+    }
+    onInputChange(str) {
+        this.queryString.emit(str);
     }
 };
 __decorate([
-    core_1.Input(), 
-    __metadata('design:type', Array)
-], ListBodyComponent.prototype, "persons", void 0);
-ListBodyComponent = __decorate([
+    core_1.Output(), 
+    __metadata('design:type', core_1.EventEmitter)
+], ListFilterComponent.prototype, "queryString", void 0);
+ListFilterComponent = __decorate([
     core_1.Component({
-        selector: 'list-body',
-        templateUrl: 'app/components/listBody.component/listBody.component.html',
-        styleUrls: ['app/components/listBody.component/listBody.component.css'],
+        selector: 'list-filter',
+        templateUrl: 'app/components/listFilter.component/listFilter.component.html',
+        styleUrls: ['app/components/listFilter.component/listFilter.component.css'],
     }), 
     __metadata('design:paramtypes', [])
-], ListBodyComponent);
-exports.ListBodyComponent = ListBodyComponent;
+], ListFilterComponent);
+exports.ListFilterComponent = ListFilterComponent;
 
-//# sourceMappingURL=../../maps/components/listBody.component/listBody.component.js.map
+//# sourceMappingURL=../../maps/components/listFilter.component/listFilter.component.js.map

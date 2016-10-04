@@ -13,7 +13,7 @@ const mock_list_1 = require('../mock-data/mock-list');
 let ListService = class ListService {
     getPromiseData() {
         return new Promise((resolve, reject) => {
-            resolve(mock_list_1.mockData);
+            setTimeout(() => resolve(mock_list_1.mockData), 150);
         });
     }
 };
