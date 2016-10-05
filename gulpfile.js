@@ -9,14 +9,16 @@ const helper = require('./gulp-modules/_helper');
 gulp.task('build', [
   'assets',
   'typescript',
-  'sass'
+  'sass',
+  'sass:static'
 ]);
 
 gulp.task('build:deep', [
   'clean',
   'assets',
   'typescript',
-  'sass'
+  'sass',
+  'sass:static'
 ]);
 
 gulp.task('develop', [
@@ -52,7 +54,7 @@ gulp.task('watch', () => {
 });
 
 helper.lazyTask('clean', './clean', {
-  src: 'app/'
+  src: ['app/', 'static/maps', 'static/core.css']
 });
 
 helper.lazyTask('dev:server', './server');
