@@ -76,5 +76,5 @@ helper.lazyTask('sass', './sass', {
 
 helper.lazyTask('sass:static', './sass', {
   src: 'static/*.sass',
-  dst: 'static/'
+  dst: './'
 });
