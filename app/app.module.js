@@ -14,11 +14,12 @@ const app_component_1 = require('./components/app.component/app.component');
 const list_component_1 = require("./components/list.component/list.component");
 const listBody_component_1 = require("./components/listBody.component/listBody.component");
 const listFilter_component_1 = require("./components/listFilter.component/listFilter.component");
+const forms_1 = require("@angular/forms");
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
     core_1.NgModule({
-        imports: [platform_browser_1.BrowserModule],
+        imports: [platform_browser_1.BrowserModule, forms_1.FormsModule],
         declarations: [app_component_1.AppComponent, list_component_1.ListComponent, listBody_component_1.ListBodyComponent, listFilter_component_1.ListFilterComponent],
         bootstrap: [app_component_1.AppComponent]
     }), 

@@ -1,7 +1,7 @@
-import {Component, OnInit} from '@angular/core';
+import { Component } from '@angular/core';
 import { ListService } from "../../shared/list.service";
 import { Person } from "../../shared/person.model";
-import {EmittingObject} from "../../shared/emittingObject.model";
+import { ListFilter } from "../../shared/listFilter.model";
 
 @Component({
   selector: 'list',
@@ -9,35 +9,39 @@ import {EmittingObject} from "../../shared/emittingObject.model";
   providers: [ ListService ]
 })
 
-export class ListComponent implements OnInit {
-  public persons: Person[];
+export class ListComponent {
+  public displayingPersons: Person[];
+  public personsCount: number;
   public personsData: Person[];
 
-  constructor(private listService: ListService) {}
-
-  ngOnInit() {
+  constructor(private listService: ListService) {
     this.getData();
-    this.persons = this.personsData;
   }
 
-  private onQueryString(emittedObject: EmittingObject) {
-    if (emittedObject.value != '') {
-      this.persons = this.personsData
-        .filter(person => this.checkContainsInString(emittedObject.value, person[emittedObject.id]));
-    } else {
-      this.persons = this.personsData;
-    }
+  private initList(data):void {
+    this.personsData = this.displayingPersons = data;
   }
 
-  private getData() {
+  private getData():void {
     this.listService.getPromiseData()
-      .then(usersArray => this.personsData = this.persons = usersArray);
+      .then((data) => this.initList(data));
   }
 
-  private checkContainsInString(queryString: string, checkingString: string) {
-    return checkingString
-      .toLowerCase()
-      .includes(queryString.toLowerCase()) ? true : false;
+  private checkContainsInPerson(person: Person, filter: ListFilter):boolean {
+    let isContain: boolean = true;
+    for (let prop in filter) {
+      if (!this.checkContainsInString(person[prop], filter[prop])) isContain = false;
+    }
+    return isContain;
+  }
+
+  private checkContainsInString(personString: string, filterString: string):boolean {
+    return personString.toLowerCase()
+      .includes(filterString.toLowerCase())
+  }
+
+  private onFilterChange(filter: ListFilter):void {
+    this.displayingPersons = this.personsData
+      .filter(person => this.checkContainsInPerson(person, filter));
   }
 }
-

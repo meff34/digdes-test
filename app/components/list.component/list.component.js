@@ -13,28 +13,30 @@ const list_service_1 = require("../../shared/list.service");
 let ListComponent = class ListComponent {
     constructor(listService) {
         this.listService = listService;
-    }
-    ngOnInit() {
         this.getData();
-        this.persons = this.personsData;
     }
-    onQueryString(emittedObject) {
-        if (emittedObject.value != '') {
-            this.persons = this.personsData
-                .filter(person => this.checkContainsInString(emittedObject.value, person[emittedObject.id]));
-        }
-        else {
-            this.persons = this.personsData;
-        }
+    initList(data) {
+        this.personsData = this.displayingPersons = data;
     }
     getData() {
         this.listService.getPromiseData()
-            .then(usersArray => this.personsData = this.persons = usersArray);
+            .then((data) => this.initList(data));
     }
-    checkContainsInString(queryString, checkingString) {
-        return checkingString
-            .toLowerCase()
-            .includes(queryString.toLowerCase()) ? true : false;
+    checkContainsInPerson(person, filter) {
+        let isContain = true;
+        for (let prop in filter) {
+            if (!this.checkContainsInString(person[prop], filter[prop]))
+                isContain = false;
+        }
+        return isContain;
+    }
+    checkContainsInString(personString, filterString) {
+        return personString.toLowerCase()
+            .includes(filterString.toLowerCase());
+    }
+    onFilterChange(filter) {
+        this.displayingPersons = this.personsData
+            .filter(person => this.checkContainsInPerson(person, filter));
     }
 };
 ListComponent = __decorate([

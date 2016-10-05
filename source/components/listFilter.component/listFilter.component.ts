@@ -1,5 +1,5 @@
 import {Component, Output, EventEmitter} from "@angular/core";
-import {EmittingObject} from "../../shared/emittingObject.model";
+import {ListFilter} from "../../shared/listFilter.model";
 
 @Component({
   selector: 'list-filter',
@@ -8,17 +8,21 @@ import {EmittingObject} from "../../shared/emittingObject.model";
 })
 
 export class ListFilterComponent {
+  @Output() filterChangeEmitter:EventEmitter<ListFilter> = new EventEmitter<ListFilter>();
 
-  @Output() queryString:EventEmitter<EmittingObject> = new EventEmitter<EmittingObject>();
+  state: ListFilter;
 
-  constructor() {}
+  constructor() {
+    this.state = {
+      name: '',
+      email: '',
+      login: '',
+      createDate: ''
+    }
+  }
 
-  private onInputChange(element: HTMLInputElement) {
-    let emittingObject = {
-      id: element.id,
-      value: element.value
-    };
-    this.queryString.emit(emittingObject);
+  private emitChanges() {
+    this.filterChangeEmitter.emit(this.state);
   }
 }
 

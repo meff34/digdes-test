@@ -4,9 +4,10 @@ import {AppComponent} from './components/app.component/app.component';
 import {ListComponent} from "./components/list.component/list.component";
 import {ListBodyComponent} from "./components/listBody.component/listBody.component";
 import {ListFilterComponent} from "./components/listFilter.component/listFilter.component";
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
-  imports: [BrowserModule],
+  imports: [BrowserModule, FormsModule],
   declarations: [AppComponent, ListComponent, ListBodyComponent, ListFilterComponent],
   bootstrap: [AppComponent]
 })

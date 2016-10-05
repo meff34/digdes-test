@@ -1,18 +1,18 @@
 <div class="row">
   <label for="name">
     name
-    <input type="text" id="name" (keyup)="onInputChange($event.target)">
+    <input type="text" id="name" [(ngModel)]="state.name" (keyup)="emitChanges()">
   </label>
   <label for="email">
     email
-    <input type="text" id="email" (keyup)="onInputChange($event.target)">
+    <input type="text" id="email" [(ngModel)]="state.email" (keyup)="emitChanges()">
   </label>
   <label for="login">
     login
-    <input type="text" id="login" (keyup)="onInputChange($event.target)">
+    <input type="text" id="login" [(ngModel)]="state.login" (keyup)="emitChanges()">
   </label>
   <label for="createDate">
     createDate
-    <input type="text" id="createDate" (keyup)="onInputChange($event.target)">
+    <input type="text" id="createDate" [(ngModel)]="state.createDate" (keyup)="emitChanges()">
   </label>
 </div>

@@ -1,2 +1,2 @@
-<list-filter (queryString)="onQueryString($event)"></list-filter>
-<list-body [persons]="persons"></list-body>
+<list-filter (filterChangeEmitter)="onFilterChange($event)"></list-filter>
+<list-body [persons]="displayingPersons"></list-body>

@@ -11,20 +11,22 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 const core_1 = require("@angular/core");
 let ListFilterComponent = class ListFilterComponent {
     constructor() {
-        this.queryString = new core_1.EventEmitter();
-    }
-    onInputChange(element) {
-        let emittingObject = {
-            id: element.id,
-            value: element.value
+        this.filterChangeEmitter = new core_1.EventEmitter();
+        this.state = {
+            name: '',
+            email: '',
+            login: '',
+            createDate: ''
         };
-        this.queryString.emit(emittingObject);
+    }
+    emitChanges() {
+        this.filterChangeEmitter.emit(this.state);
     }
 };
 __decorate([
     core_1.Output(), 
     __metadata('design:type', core_1.EventEmitter)
-], ListFilterComponent.prototype, "queryString", void 0);
+], ListFilterComponent.prototype, "filterChangeEmitter", void 0);
 ListFilterComponent = __decorate([
     core_1.Component({
         selector: 'list-filter',
