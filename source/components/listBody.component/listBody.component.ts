@@ -1,5 +1,5 @@
 import {Component, Input} from "@angular/core";
-import {Person} from "../../shared/person.model";
+import {Person} from "../../models/person.model";
 
 @Component({
   selector: 'list-body',

@@ -1,0 +1,15 @@
+@import "variables"
+// 1 + 1.5 +1.25 +.75 = 4.5 parts
+=table-proportions
+  &__name
+    flex: 1 0 $min-width-name // 1 / 4.5 = 22%
+    min-width: $min-width-name
+  &__email
+    flex: 1.5 0 $min-width-email // 1.5 / 4.5 = 33.(3)%
+    min-width: $min-width-email
+  &__login
+    flex: 1.25 0 $min-width-login // 1.25 / 4.5 = 27.(7)%
+    min-width: $min-width-login
+  &__create-date
+    flex: .75 0 $min-width-create-date // .75 /   4.5 = 16.(6)%
+    min-width: $min-width-create-date

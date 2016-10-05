@@ -1,4 +1,17 @@
+@import "../../shared/variables"
+@import "../../shared/mixins"
+
 .row
   display: flex
   justify-content: space-between
-  margin-bottom: 25px
+
+.cell
+  padding: 10px 12px
+  border-bottom: 1px solid $col-table-border
+  +table-proportions
+  &:first-child
+    border-left: 1px solid $col-table-border
+  &:last-child
+    border-right: 1px solid $col-table-border
+  &__create-date
+    text-align: center

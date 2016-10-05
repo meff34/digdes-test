@@ -1,0 +1,27 @@
+<div class="pagination--wrap">
+  <div class="pagination">
+    <ul *ngIf="pagination.pages && pagination.pages.length > 1">
+      <li [ngClass]="{disabled:pagination.currentPage === 1}">
+        <a (click)="onClick(1)"><<</a>
+      </li>
+      <li [ngClass]="{disabled:pagination.currentPage === 1}">
+        <a (click)="onClick(pagination.currentPage - 1)"><</a>
+      </li>
+      <li *ngFor="let page of pagination.pages" [ngClass]="{active:pagination.currentPage === page}">
+        <a (click)="onClick(page)">{{page}}</a>
+      </li>
+      <li [ngClass]="{disabled:pagination.currentPage === pagination.totalPages}">
+        <a (click)="onClick(pagination.currentPage + 1)">></a>
+      </li>
+      <li [ngClass]="{disabled:pagination.currentPage === pagination.totalPages}">
+        <a (click)="onClick(pagination.totalPages)">>></a>
+      </li>
+    </ul>
+  </div>
+  <p class="pagination__counter" *ngIf="pagination.totalItems > 0">
+    <span>{{pagination.firstIndexOnPage}} - {{pagination.lasttIndexOnPage}}</span>
+    of
+    <span>{{pagination.totalItems}}</span>
+    persons
+  </p>
+</div>

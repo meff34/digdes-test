@@ -1,9 +1,1 @@
-/* This file is generated — do not edit by hand! */
-.row {
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-pack: justify;
-      justify-content: space-between;
-  margin-bottom: 2.5rem;
-}
-/*# sourceMappingURL=../../maps/components/listBody.component/listBody.component.css.map */
+.row{display:-ms-flexbox;display:flex;-ms-flex-pack:justify;justify-content:space-between}.cell{padding:1rem 1.2rem;border-bottom:1px solid #e6e6e6}.cell__name{-ms-flex:1 0 180px;flex:1 0 180px;min-width:180px}.cell__email{-ms-flex:1.5 0 230px;flex:1.5 0 230px;min-width:230px}.cell__login{-ms-flex:1.25 0 150px;flex:1.25 0 150px;min-width:150px}.cell__create-date{-ms-flex:.75 0 110px;flex:.75 0 110px;min-width:110px;text-align:center}.cell:first-child{border-left:1px solid #e6e6e6}.cell:last-child{border-right:1px solid #e6e6e6}

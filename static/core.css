@@ -501,6 +501,13 @@ template {
   display: none;
 }
 
+body,
+body * {
+  font-family: "Helvetica Neue";
+  box-sizing: border-box;
+  color: #333333;
+}
+
 @keyframes spin {
   0% {
     transform: rotate(0deg);

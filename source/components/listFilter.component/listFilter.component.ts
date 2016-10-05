@@ -1,5 +1,5 @@
 import {Component, Output, EventEmitter} from "@angular/core";
-import {ListFilter} from "../../shared/listFilter.model";
+import {Person} from "../../models/person.model";
 
 @Component({
   selector: 'list-filter',
@@ -8,9 +8,9 @@ import {ListFilter} from "../../shared/listFilter.model";
 })
 
 export class ListFilterComponent {
-  @Output() filterChangeEmitter:EventEmitter<ListFilter> = new EventEmitter<ListFilter>();
+  @Output() filterChangeEmitter:EventEmitter<Person> = new EventEmitter<Person>();
 
-  state: ListFilter;
+  state: Person;
 
   constructor() {
     this.state = {

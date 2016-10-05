@@ -1,3 +1,7 @@
+/*
+* list is extended via
+* http://www.json-generator.com/
+* */
 export const mockData = [
   {
     "name":"Ada Abbott",
@@ -40,5 +44,47 @@ export const mockData = [
     "email":"roberta.pfeffer@alexandrine.biz",
     "login":"East Alejandrin",
     "createDate":"10.09.16"
+  },
+  {
+    "name": "Inez Duran",
+    "email": "inezduran@candecor.com",
+    "createDate": "09.06.16",
+    "login": "sit"
+  },
+  {
+    "name": "Moss Richard",
+    "email": "mossrichard@candecor.com",
+    "createDate": "20.11.16",
+    "login": "mollit"
+  },
+  {
+    "name": "Jessica Noel",
+    "email": "jessicanoel@candecor.com",
+    "createDate": "07.10.16",
+    "login": "exercitation"
+  },
+  {
+    "name": "Tamera Hays",
+    "email": "tamerahays@candecor.com",
+    "createDate": "30.10.16",
+    "login": "quis"
+  },
+  {
+    "name": "Moon Gonzales",
+    "email": "moongonzales@candecor.com",
+    "createDate": "06.02.16",
+    "login": "nostrud"
+  },
+  {
+    "name": "Angelica Leon",
+    "email": "angelicaleon@candecor.com",
+    "createDate": "24.06.16",
+    "login": "do"
+  },
+  {
+    "name": "Meyer Farrell",
+    "email": "meyerfarrell@candecor.com",
+    "createDate": "23.05.16",
+    "login": "ad"
   }
 ];

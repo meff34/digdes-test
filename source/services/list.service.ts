@@ -5,7 +5,7 @@ import { mockData } from '../mock-data/mock-list'
 export class ListService {
 
   public getPromiseData():any {
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve) => {
       setTimeout(() => resolve(mockData), 150);
     });
   }

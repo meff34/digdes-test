@@ -1,0 +1,30 @@
+@import "../../shared/variables"
+
+.pagination
+  &--wrap
+    display: flex
+    justify-content: space-between
+    border: 1px solid $col-table-border
+    padding: 0 10px
+  &__counter
+    justify-self: flex-end
+
+ul
+  display: flex
+  justify-content: center
+  list-style: none
+  padding: 0
+
+li
+  border-top: 2px solid transparent
+  padding: 0 5px
+  color: $col-black-text
+  transition: all .2s ease-in-out
+  &:not(.disabled):not(active) a
+    cursor: pointer
+  &.disabled
+    color: $col-disabled
+  &.active
+    color: $col-pagination-active
+    border-color: $col-pagination-active
+    background-color: $col-pagination-active-bg

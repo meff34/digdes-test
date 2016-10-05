@@ -1,2 +1,6 @@
-<list-filter (filterChangeEmitter)="onFilterChange($event)"></list-filter>
-<list-body [persons]="displayingPersons"></list-body>
+<div class="table-wrapper">
+  <list-filter (filterChangeEmitter)="onFilterChange($event)"></list-filter>
+  <list-body [persons]="displayingPersons"></list-body>
+</div>
+
+<list-pagination [pagination]="pagination" (paginationEmitter)="onPaginationClick($event)"></list-pagination>

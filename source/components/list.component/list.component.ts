@@ -1,47 +1,67 @@
-import { Component } from '@angular/core';
-import { ListService } from "../../shared/list.service";
-import { Person } from "../../shared/person.model";
-import { ListFilter } from "../../shared/listFilter.model";
+import { Component, OnInit } from '@angular/core';
+import { ListService } from "../../services/list.service";
+import { Person } from "../../models/person.model";
+import { PaginationService } from "../../services/pagination.service";
+import {FilterService} from "../../services/filter.service";
+import {Paginator} from "../../models/pagination.model";
 
 @Component({
   selector: 'list',
   templateUrl: 'app/components/list.component/list.component.html',
-  providers: [ ListService ]
+  styleUrls: ['app/components/list.component/list.component.css'],
+  providers: [ ListService, FilterService, PaginationService ]
 })
 
-export class ListComponent {
-  public displayingPersons: Person[];
-  public personsCount: number;
-  public personsData: Person[];
+export class ListComponent implements OnInit {
+  private personsData: Person[];
+  private filteredPersons: Person[];
+  private displayingPersons: Person[];
+  private pagination: Paginator = {};
 
-  constructor(private listService: ListService) {
-    this.getData();
+  constructor(
+    private listService: ListService,
+    private filterService: FilterService,
+    private paginationService: PaginationService
+  ) {}
+
+  ngOnInit() {
+    this.getPersonsData();
   }
 
-  private initList(data):void {
-    this.personsData = this.displayingPersons = data;
-  }
-
-  private getData():void {
+  private getPersonsData():void {
     this.listService.getPromiseData()
       .then((data) => this.initList(data));
   }
 
-  private checkContainsInPerson(person: Person, filter: ListFilter):boolean {
-    let isContain: boolean = true;
-    for (let prop in filter) {
-      if (!this.checkContainsInString(person[prop], filter[prop])) isContain = false;
+  private initList(data):void {
+    this.filteredPersons = this.personsData = data;
+    this.setPage(1);
+  }
+
+  private setPage(page: number):void {
+    if (this.pagination.totalPages && (page < 1 || page > this.pagination.totalPages)) {
+      return;
     }
-    return isContain;
+    // get pagination object from service
+    this.pagination = this.paginationService.getPagination(this.filteredPersons.length, page, 5);
+    // check that filteredPersons isn't empty
+    if (this.pagination === {}) {
+      this.displayingPersons = [];
+      return;
+    }
+    // get current page of items
+    this.displayingPersons = this.filteredPersons.slice(this.pagination.startIndex, this.pagination.endIndex + 1);
   }
 
-  private checkContainsInString(personString: string, filterString: string):boolean {
-    return personString.toLowerCase()
-      .includes(filterString.toLowerCase())
+  private onFilterChange(filter: Person):void {
+    this.filteredPersons = this.filterService.getFilteredPersons(filter, this.personsData);
+    // restart pagination
+    this.setPage(1);
   }
 
-  private onFilterChange(filter: ListFilter):void {
-    this.displayingPersons = this.personsData
-      .filter(person => this.checkContainsInPerson(person, filter));
+  private onPaginationClick(page: number):void {
+    this.setPage(page);
   }
+
+
 }

@@ -1,4 +1,22 @@
+@import "../../shared/variables"
+@import "../../shared/mixins"
+
 .row
   display: flex
   justify-content: space-between
-  margin-bottom: 25px
+
+.cell
+  background-color: $col-table-filter-bg
+  display: flex
+  flex-flow: column nowrap
+  justify-content: space-between
+  align-items: stretch
+  border: 1px solid $col-table-border
+  +table-proportions
+  label
+    flex-grow: 1
+    text-align: center
+    padding: 13px
+    border-bottom: 1px solid $col-table-border
+  input
+    margin: 7px 14px
