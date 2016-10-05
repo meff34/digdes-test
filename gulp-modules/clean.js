@@ -2,8 +2,8 @@
 
 var del = require('del');
 
-module.exports = function(options) {
-    return function() {
-        return del.sync(options.src);
-    };
+module.exports = function (options) {
+  return function () {
+    return del.sync(options.src);
+  };
 }
